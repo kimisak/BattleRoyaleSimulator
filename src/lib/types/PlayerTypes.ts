@@ -10,7 +10,7 @@ export type Player = {
     status: "alive" | "dead",
 }
 
-type Gender = {
+export type Gender = {
     name: "male" | "female" | "non-binary",
     pronouns: GenderPronoun,
 }

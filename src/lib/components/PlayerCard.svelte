@@ -17,11 +17,10 @@
 	{#if showImage}
 		<img
 			class="mx-auto inset-0 object-contain w-full {dead_grayscale}"
-			src={player.image}
-			alt={`Picture of ${player_name}`}
+			src={player.image+"?u="+String(Math.random()*100)}
+			alt={`Picture of ${player_name(player)}`}
 		/>
 	{/if}
-
 	<p
 		class="text-sm font-semibold overflow-wrap break-word"
 		title="{player.givenName} {player.familyName}"

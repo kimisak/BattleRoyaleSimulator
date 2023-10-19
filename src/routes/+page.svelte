@@ -1,15 +1,16 @@
 <script lang='ts'>
 	import '../app.css';
-	import PlayerCard from '$lib/components/PlayerCard.svelte';
-	import {players} from '$lib/players';
+	import {teams} from '$lib/data';
+	import TeamCard from '$lib/components/TeamCard.svelte';
 
 </script>
 
-<main class="p-10 flex flex-row">
-	{#each players as player}
-		<PlayerCard player={player}/>
-	{/each}	
+<main class="p-10 flex flex-row gap-10">
+	{#each teams as team}
+		<TeamCard team={team}/>
+	{/each}
 </main>
+	
 
 <style lang="postcss">
 	:global(body) {
