@@ -2,10 +2,12 @@ import type { Team } from "./TeamTypes";
 
 export type Player = {
     givenName: string,
-    familyName: string,
+    familyName?: string,
     nickname?: string,
     gender: Gender,
-    team: Team,
+    team?: Team,
+    image: string,
+    status: "alive" | "dead",
 }
 
 type Gender = {
