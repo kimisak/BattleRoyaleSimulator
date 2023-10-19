@@ -87,5 +87,21 @@ const team2: Team = {
 	status: teamStatusActive,
 };
 
+const team3: Team = {
+	name: 'Team 3',
+	motto: 'Second to none',
+	players: [player3, player4],
+	leader: player3,
+	status: teamStatusActive,
+};
+
+const team4: Team = {
+	name: 'Team 4',
+	motto: 'Second to none',
+	players: [player3, player4],
+	leader: player3,
+	status: teamStatusActive,
+};
+
 export const players = [player1, player2, player3, player4];
-export const teams = [team1, team2];
+export const teams = [team1, team2, team3, team4];

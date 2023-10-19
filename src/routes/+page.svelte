@@ -5,7 +5,7 @@
 
 </script>
 
-<main class="p-10 flex flex-row gap-10">
+<main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10">
 	{#each teams as team}
 		<TeamCard team={team}/>
 	{/each}
