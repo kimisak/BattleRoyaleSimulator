@@ -1,43 +1,14 @@
-import type { Player, Gender } from './types/PlayerTypes';
-import type { Team, TeamStatus } from './types/TeamTypes';
-
-const maleGender: Gender = {
-	name: 'male',
-	pronouns: {
-		subject: 'he',
-		object: 'him',
-		possessive: 'his',
-		reflexive: 'himself'
-	}
-};
-
-const femaleGender: Gender = {
-	name: 'female',
-	pronouns: {
-		subject: 'she',
-		object: 'her',
-		possessive: 'her',
-		reflexive: 'herself'
-	}
-};
-
-const nonBinaryGender: Gender = {
-	name: 'non-binary',
-	pronouns: {
-		subject: 'they',
-		object: 'them',
-		possessive: 'their',
-		reflexive: 'themself'
-	}
-};
+import type { Player } from './types/PlayerTypes';
+import type { Team } from './types/TeamTypes';
+import { MALE, FEMALE, ACTIVE, ALIVE } from './constants';
 
 const player1: Player = {
 	givenName: 'Kim Isak',
 	familyName: 'Olsen',
 	nickname: 'Kimmi',
 	image: 'https://i.pravatar.cc/',
-	gender: maleGender,
-	status: 'alive'
+	gender: MALE,
+	status: ALIVE
 };
 
 const player2: Player = {
@@ -45,8 +16,8 @@ const player2: Player = {
 	familyName: 'Langås',
 	nickname: 'Sunroad',
 	image: 'https://i.pravatar.cc/',
-	gender: femaleGender,
-	status: 'alive'
+	gender: FEMALE,
+	status: ALIVE
 };
 
 const player3: Player = {
@@ -54,8 +25,8 @@ const player3: Player = {
 	familyName: 'Solbjørg',
 	nickname: 'IA',
 	image: 'https://i.pravatar.cc/',
-	gender: femaleGender,
-	status: 'alive'
+	gender: FEMALE,
+	status: ALIVE
 };
 
 const player4: Player = {
@@ -63,20 +34,16 @@ const player4: Player = {
 	familyName: 'Selnes Bognæs',
 	nickname: 'Osci',
 	image: 'https://i.pravatar.cc/',
-	gender: maleGender,
-	status: 'alive'
+	gender: MALE,
+	status: 'dead'
 };
-
-const teamStatusActive: TeamStatus = "active";
-const teamStatusEliminated = "eliminated";
-const teamSTatusDisqualified = "disqualified";
 
 const team1: Team = {
 	name: 'Team 1',
 	motto: 'We are number one',
 	players: [player1, player2],
 	leader: player1,
-	status: teamStatusActive,
+	status: ACTIVE,
 };
 
 const team2: Team = {
@@ -84,7 +51,7 @@ const team2: Team = {
 	motto: 'Second to none',
 	players: [player3, player4],
 	leader: player3,
-	status: teamStatusActive,
+	status: ACTIVE,
 };
 
 const team3: Team = {
@@ -92,7 +59,7 @@ const team3: Team = {
 	motto: 'Second to none',
 	players: [player3, player4],
 	leader: player3,
-	status: teamStatusActive,
+	status: ACTIVE,
 };
 
 const team4: Team = {
@@ -100,7 +67,7 @@ const team4: Team = {
 	motto: 'Second to none',
 	players: [player3, player4],
 	leader: player3,
-	status: teamStatusActive,
+	status: ACTIVE,
 };
 
 export const players = [player1, player2, player3, player4];
