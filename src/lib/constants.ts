@@ -1,7 +1,7 @@
 import type { Gender } from './types/PlayerTypes';
 
 export const MALE: Gender = {
-	name: 'male',
+	gender: 'male',
 	pronouns: {
 		subject: 'he',
 		object: 'him',
@@ -11,7 +11,7 @@ export const MALE: Gender = {
 };
 
 export const FEMALE: Gender = {
-name: 'female',
+	gender: 'female',
 	pronouns: {
 		subject: 'she',
 		object: 'her',
@@ -21,7 +21,7 @@ name: 'female',
 };
 
 export const NONBINARY: Gender = {
-	name: 'non-binary',
+	gender: 'non-binary',
 	pronouns: {
 		subject: 'they',
 		object: 'them',
@@ -38,3 +38,9 @@ export const DEAD = "dead";
 export const ACTIVE = "active";
 export const ELIMINATED = "eliminated";
 export const DISQUALIFIED = "disqualified";
+
+// Pronouns regexes
+export const SUBJECT_PRONOUN_PATTERN = /\((he\|she\|they)(\d+)\)/g;
+export const OBJECT_PRONOUN_PATTERN = /\((him\|her\|them)(\d+)\)/g;
+export const POSSESSIVE_PRONOUN_PATTERN = /\((his\|her\|their)(\d+)\)/g;
+export const REFLEXIVE_PRONOUN_PATTERN = /\((himself\|herself\|themself)(\d+)\)/g;
