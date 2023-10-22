@@ -1,6 +1,6 @@
 type SubjectPronoun = 'he' | 'she' | 'they';
 type ObjectPronoun = 'him' | 'her' | 'them';
-type PossessivePronoun = 'his' | 'hers' | 'their';
+type PossessivePronoun = 'his' | 'her' | 'their';
 type ReflexivePronoun = 'himself' | 'herself' | 'themself';
 
 export type Pronouns = SubjectPronoun | ObjectPronoun | PossessivePronoun | ReflexivePronoun;

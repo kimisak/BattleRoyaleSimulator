@@ -48,6 +48,7 @@ export const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStr
 			regExpStrings[pronounType] = GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX(regexString);
 		});
 	});
+	console.log('Regex strings:', regExpStrings)
 	return regExpStrings;
 };
 
@@ -113,6 +114,7 @@ const replaceSingularPronounTypePlaceholders = (
 
 const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[]): string => {
 	const pronounsInText: PronounType[] = getPronounsInText(text);
+	console.log("pronounsInText:", pronounsInText);
 	for (const pronounType of pronounsInText) {
 		let pronounRegex: RegExp = new RegExp('');
 		switch (pronounType) {
