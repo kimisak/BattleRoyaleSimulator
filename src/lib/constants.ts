@@ -47,7 +47,8 @@ export const PRONOUN_TYPES: PronounType[] = [
 export const GAME_EVENT_TEXT_PLAYER_REGEX = /\(Player(\d+)\)/g;
 // Finds all occurences in a string on the form (pronoun<divider>pronoun<divider>...pronoun#)
 // Example: (he/she/they1), (him/her/them1), (his/her/their1), (himself/herself/themself1)
-export const GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX = (pronouns: string) => `\\((${pronouns})(\\d+)\\)`;
+export const GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX = (pronouns: string) =>
+	`\\((${pronouns})(\\d+)\\)`;
 export const GAME_EVENT_TEXT_PRONOUN_DIVIDER = '/';
 // The regex strings for all pronoun types
 const PRONOUN_REGEX_STRINGS = generatePronounRegExpStrings(MALE, FEMALE, NON_BINARY);
@@ -65,4 +66,3 @@ export const DEAD = 'dead';
 export const ACTIVE = 'active';
 export const ELIMINATED = 'eliminated';
 export const DISQUALIFIED = 'disqualified';
-

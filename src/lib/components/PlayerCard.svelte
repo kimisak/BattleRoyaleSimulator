@@ -12,7 +12,7 @@
 	{#if showImage}
 		<img
 			class="mx-auto inset-0 object-contain w-full {dead_grayscale}"
-			src={player.image+"?u="+String(Math.random()*100)}
+			src={player.image + '?u=' + String(Math.random() * 100)}
 			alt={`Picture of ${getPlayerName(player)}`}
 		/>
 	{/if}
