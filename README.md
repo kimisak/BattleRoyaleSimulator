@@ -39,7 +39,7 @@ The player and pronoun placeholders are indexed and should correspond. If `(Play
 
 There are multiple [helpers](./src/lib/helper.ts) that are responsible for the replacements of placeholders.
 
-- `replaceTextPlaceholders(text, players)` works as the `main` of placeholder replacements where
+- `createContentfulGameEventText(text, players)` works as the `main` of placeholder replacements where
 - `(Player#)` placeholders are replaced with `replacePlayerNamePlaceholders(text, players)`.
 - `(Pronouns#)` placeholders are replaced with `replaceMultiplePronounTypePlaceholders(text, players)` which
 - finds all pronoun types with `getPronounsInText(text)` used in the `text` and iterates through them, calling `replaceSingularPronounTypePlaceholders(text, players, regex, divider)` to replace each pronoun type match with the corresponding player's pronoun.
@@ -47,12 +47,13 @@ There are multiple [helpers](./src/lib/helper.ts) that are responsible for the r
 In short:
 
 ```
-replaceTextPlaceholders(...)
+createContentfulGameEventText(...)
 |-- replacePlayerNamePlaceholders(...)
 |-- replaceMultiplePronounTypePlaceholders(...)
 |   |-- getPronounsInText(...)
 |   |-- replaceSingularPronounTypePlaceholders(...)
 |---|
+|---(sentence capitalization, Player name html and css styling, etc.)
 |
 returns text with player names and pronouns instead of placeholders.
 ```

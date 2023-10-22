@@ -87,6 +87,32 @@ const replacePlayerNamePlaceholders = (text: string, players: Player[]): string 
 	return filledSentence;
 };
 
+const checkPlayersAgainstPlaceholderIndexes = (text:string, players: Player[]): void => {
+	// Regex assumes the index is formatted as '[a-z]#)'
+	// Example: 'y1)' as in 'they1)'
+	// Could be moved to constants.ts along with the other index regex assumptions
+	const regex = new RegExp(/[a-z](\d+)\)/g);
+	let match: RegExpExecArray | null;
+	let highestNumber = 0;
+	while ((match = regex.exec(text)) !== null) {
+		// match[1] is the capture group of \d+
+		const index = parseInt(match[1], 10);
+		if (index > highestNumber) {
+			highestNumber = index;
+		}
+	}
+	if (highestNumber > players.length) {
+		throw new Error(
+			`The highest player placeholder index in the text is ${highestNumber}, but there are only ${players.length} players.`
+		);
+	} else if (highestNumber < players.length) {
+		console.warn('There are more players than player placeholders in the text: but it will still work.')
+	}
+	else {
+		console.log('The number of players matches the number of player placeholders in the text.');
+	}
+}
+
 const replaceSingularPronounTypePlaceholders = (
 	text: string,
 	players: Player[],
@@ -141,13 +167,13 @@ const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[])
 	return text;
 };
 
-// TODO: perhaps move the capitalization concern below to the regex strings
+// TODO: perhaps move the capitalization concern below to the regex strings creation
 // Example: \(((he\/she\/they)|(He\/She\/They))(\d+)\)
 // This could be done in generatePronounRegExpStrings(...)'s RegexString creation.
 
-// Used to capitalize the first letter of each sentence,
-// useful when a sentence begins with a player's lowercase pronoun.
-const capitalizeSentences = (text: string): string => {
+// Used to capitalize the first letter of sentences that begin with a lowercase.
+// Useful when a sentence begins with a player's lowercase pronoun.
+const capitalizeSentencesStartingWithLowercase = (text: string): string => {
 	const sentences = text.split('. ');
 	// beware the regex does not concern accented characters, vowel mutations, or graphemes etc.
 	const lowerCaseSentences = sentences.filter((sentence) => /^[a-z]/.test(sentence));
@@ -160,9 +186,16 @@ const capitalizeSentences = (text: string): string => {
 	return sentences.join('. ');
 }
 
-export const replaceTextPlaceholders = (text: string, players: Player[]): string => {
+const addHtmlTagsToText = (text: string, players: Player[]): string => {
+	return "";
+}
+
+// Replaces placeholders with player names and pronouns
+export const createContentfulGameEventText = (text: string, players: Player[]): string => {
+	checkPlayersAgainstPlaceholderIndexes(text, players);
 	text = replacePlayerNamePlaceholders(text, players);
 	text = replaceMultiplePronounTypePlaceholders(text, players);
-	text = capitalizeSentences(text);
+	text = capitalizeSentencesStartingWithLowercase(text);
+	// text = addHtmlTagsToText(text, players);
 	return text;
 };

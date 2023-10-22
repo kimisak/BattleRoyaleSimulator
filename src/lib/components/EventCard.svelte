@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Player } from '$lib/types/player.types';
 	import type { GameEvent } from '$lib/types/game.types';
-	import { replaceTextPlaceholders } from '$lib/helper';
+	import { createContentfulGameEventText } from '$lib/helper';
 
 	export let players: Player[];
 	const eventText1 =
@@ -19,29 +19,29 @@
 	const event3: GameEvent = { text: eventText3 };
 	const event4: GameEvent = { text: eventText4 };
 
-	const replaced1 = replaceTextPlaceholders(event1.text, players);
-	const replaced2 = replaceTextPlaceholders(event2.text, players);
-	const replaced3 = replaceTextPlaceholders(event3.text, players);
-	const replaced4 = replaceTextPlaceholders(event4.text, players);
+	const replaced1 = createContentfulGameEventText(event1.text, players);
+	const replaced2 = createContentfulGameEventText(event2.text, players);
+	const replaced3 = createContentfulGameEventText(event3.text, players);
+	const replaced4 = createContentfulGameEventText(event4.text, players);
 </script>
 
 <div>
 	<strong>Raw data</strong>
 	<p>{event1.text}</p>
 	<strong>Mutated data</strong>
-	<p>{replaced1}</p>
+	<p>{@html replaced1}</p>
 	<strong>Raw data</strong>
 	<p>{event2.text}</p>
 	<strong>Mutated data</strong>
-	<p>{replaced2}</p>
+	<p>{@html replaced2}</p>
 	<strong>Raw data</strong>
 	<p>{event3.text}</p>
 	<strong>Mutated data</strong>
-	<p>{replaced3}</p>
+	<p>{@html replaced3}</p>
 	<strong>Raw data</strong>
 	<p>{event4.text}</p>
 	<strong>Mutated data</strong>
-	<p>{replaced4}</p>
+	<p>{@html replaced4}</p>
 </div>
 
 <style lang="postcss">
