@@ -11,13 +11,13 @@ import {
 	REFLEXIVE_PRONOUN_REGEX,
 	GAME_EVENT_TEXT_PRONOUN_DIVIDER,
 	PRONOUNS,
-	GENDERS,
 	GAME_EVENT_TEXT_PLAYER_REGEX,
 	GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX
 } from './constants';
 import type { Gender, PronounType, Pronouns } from './types/gender_and_pronouns.types';
 
 // Pronoun helpers used to create constants in src/lib/constants.ts
+// This type could probably be moved, but it's only used in the following function.
 export type PronounRegexStrings = {
 	subject: string;
 	object: string;
@@ -40,7 +40,7 @@ export const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStr
 		let regexString = '';
 		// with values from each gender
 		genders.forEach((gender, index) => {
-			const isLastGender = index === GENDERS.length - 1;
+			const isLastGender = index === genders.length - 1;
 			// appended and seprarated by the divider
 			regexString += isLastGender
 				? `${gender.pronouns[pronounType]}` // Don't append the divider

@@ -16,7 +16,7 @@ export const FEMALE: Gender = {
 	pronouns: {
 		subject: 'she',
 		object: 'her',
-		possessive: 'her',
+		possessive: 'hers',
 		reflexive: 'herself'
 	}
 };

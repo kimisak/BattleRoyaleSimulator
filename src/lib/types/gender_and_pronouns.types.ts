@@ -1,11 +1,12 @@
 type SubjectPronoun = 'he' | 'she' | 'they';
 type ObjectPronoun = 'him' | 'her' | 'them';
-type PossessivePronoun = 'his' | 'her' | 'their';
+type PossessivePronoun = 'his' | 'hers' | 'their';
 type ReflexivePronoun = 'himself' | 'herself' | 'themself';
 
+export type Pronouns = SubjectPronoun | ObjectPronoun | PossessivePronoun | ReflexivePronoun;
 export type PronounType = 'subject' | 'object' | 'possessive' | 'reflexive';
 
-export type Pronouns = {
+export type GenderPronouns = {
 	subject: SubjectPronoun;
 	object: ObjectPronoun;
 	possessive: PossessivePronoun;
@@ -15,5 +16,5 @@ export type Pronouns = {
 type GenderType = 'male' | 'female' | 'non-binary';
 export type Gender = {
 	gender: GenderType;
-	pronouns: Pronouns;
+	pronouns: GenderPronouns;
 };
