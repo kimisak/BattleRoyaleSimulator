@@ -1,5 +1,5 @@
 import { generatePronounRegExpStrings } from './helper';
-import type { Gender, PronounType } from './types/PlayerTypes';
+import type { Gender, PronounType } from './types/gender_and_pronouns.types';
 
 // Genders
 export const MALE: Gender = {
@@ -32,34 +32,30 @@ export const NON_BINARY: Gender = {
 export const GENDER_TYPES: Gender[] = [MALE, FEMALE, NON_BINARY];
 
 // Pronoun Types
-export const SUBJECT_PRONOUN_TYPE = 'subject';
-export const OBJECT_PRONOUN_TYPE = 'object';
-export const POSSESSIVE_PRONOUN_TYPE = 'possessive';
-export const REFLEXIVE_PRONOUN_TYPE = 'reflexive';
+export const SUBJECT_PRONOUN = 'subject';
+export const OBJECT_PRONOUN = 'object';
+export const POSSESSIVE_PRONOUN = 'possessive';
+export const REFLEXIVE_PRONOUN = 'reflexive';
 export const PRONOUN_TYPES: PronounType[] = [
-	SUBJECT_PRONOUN_TYPE,
-	OBJECT_PRONOUN_TYPE,
-	POSSESSIVE_PRONOUN_TYPE,
-	REFLEXIVE_PRONOUN_TYPE
+	SUBJECT_PRONOUN,
+	OBJECT_PRONOUN,
+	POSSESSIVE_PRONOUN,
+	REFLEXIVE_PRONOUN
 ];
 
-// Finds all occurences in a string on the form (Player#)
+// Finds all occurences in a string on the form (Player#), example (Player1)
 export const GAME_EVENT_TEXT_PLAYER_REGEX = /\(Player(\d+)\)/g;
-
+// Finds all occurences in a string on the form (pronoun<divider>pronoun<divider>...pronoun#)
+// Example: (he/she/they1), (him/her/them1), (his/her/their1), (himself/herself/themself1)
 export const GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX = (pronouns: string) => `\\((${pronouns})(\\d+)\\)`;
 export const GAME_EVENT_TEXT_PRONOUN_DIVIDER = '/';
+// The regex strings for all pronoun types
 const PRONOUN_REGEX_STRINGS = generatePronounRegExpStrings(MALE, FEMALE, NON_BINARY);
-
-export const SUBJECT_PRONOUN_REGEX_STRING = PRONOUN_REGEX_STRINGS[SUBJECT_PRONOUN_TYPE];
-export const OBJECT_PRONOUN_REGEX_STRING = PRONOUN_REGEX_STRINGS[OBJECT_PRONOUN_TYPE];
-export const POSSESSIVE_PRONOUN_REGEX_STRING = PRONOUN_REGEX_STRINGS[POSSESSIVE_PRONOUN_TYPE];
-export const REFLEXIVE_PRONOUN_REGEX_STRING = PRONOUN_REGEX_STRINGS[REFLEXIVE_PRONOUN_TYPE];
-
 // Pronouns Regexes set with Flag 'g'
-export const SUBJECT_PRONOUN_REGEX = new RegExp(SUBJECT_PRONOUN_REGEX_STRING, 'g');
-export const OBJECT_PRONOUN_REGEX = new RegExp(OBJECT_PRONOUN_REGEX_STRING, 'g');
-export const POSSESSIVE_PRONOUN_REGEX = new RegExp(POSSESSIVE_PRONOUN_REGEX_STRING, 'g');
-export const REFLEXIVE_PRONOUN_REGEX = new RegExp(REFLEXIVE_PRONOUN_REGEX_STRING, 'g');
+export const SUBJECT_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[SUBJECT_PRONOUN], 'g');
+export const OBJECT_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[OBJECT_PRONOUN], 'g');
+export const POSSESSIVE_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[POSSESSIVE_PRONOUN], 'g');
+export const REFLEXIVE_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[REFLEXIVE_PRONOUN], 'g');
 
 // Player Status
 export const ALIVE = 'alive';

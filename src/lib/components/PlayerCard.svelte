@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Player } from '$lib/types/PlayerTypes';
+	import type { Player } from '$lib/types/player.types';
 	import { getPlayerName } from '$lib/helper';
 	export let player: Player;
 	export let showImage: boolean = false;

@@ -1,2 +1,2 @@
-export * from "./PlayerTypes";
-export * from "./TeamTypes";
+export * from "./player.types";
+export * from "./team.types";

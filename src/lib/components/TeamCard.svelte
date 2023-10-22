@@ -1,6 +1,6 @@
 
 <script lang="ts">
-import type {Team} from "$lib/types/TeamTypes";
+import type {Team} from "$lib/types/team.types";
 	import PlayerCard from "./PlayerCard.svelte";
     export let team: Team;
     export let showMotto = false;

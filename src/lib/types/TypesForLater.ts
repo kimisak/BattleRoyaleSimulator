@@ -1,5 +1,5 @@
-import type { Player } from "./PlayerTypes";
-import type { Team } from "./TeamTypes";
+import type { Player } from "./player.types";
+import type { Team } from "./team.types";
 
 type Achievement = {
     icon: string,

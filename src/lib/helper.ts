@@ -1,9 +1,10 @@
-import type { Pronouns, Player, PronounType, Gender } from './types/PlayerTypes';
+import type {Player } from './types/player.types';
+
 import {
-	SUBJECT_PRONOUN_TYPE,
-	OBJECT_PRONOUN_TYPE,
-	POSSESSIVE_PRONOUN_TYPE,
-	REFLEXIVE_PRONOUN_TYPE,
+	SUBJECT_PRONOUN,
+	OBJECT_PRONOUN,
+	POSSESSIVE_PRONOUN,
+	REFLEXIVE_PRONOUN,
 	SUBJECT_PRONOUN_REGEX,
 	OBJECT_PRONOUN_REGEX,
 	POSSESSIVE_PRONOUN_REGEX,
@@ -14,7 +15,8 @@ import {
 	GAME_EVENT_TEXT_PLAYER_REGEX,
 	GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX,
 } from './constants';
-import type { GameEvent } from './types/GameTypes';
+import type { GameEvent } from './types/game.types';
+import type { Gender, PronounType, Pronouns } from './types/gender_and_pronouns.types';
 
 // Pronoun helpers used to create constants in src/lib/constants.ts
 export type PronounRegexStrings = {
@@ -57,10 +59,10 @@ export const getPlayerName = (player: Player): string => {
 // GameEvent
 const getPronounsInText = (text: string): PronounType[] => {
 	const pronounsInText: PronounType[] = [];
-	SUBJECT_PRONOUN_REGEX.test(text) && pronounsInText.push(SUBJECT_PRONOUN_TYPE);
-	OBJECT_PRONOUN_REGEX.test(text) && pronounsInText.push(OBJECT_PRONOUN_TYPE);
-	POSSESSIVE_PRONOUN_REGEX.test(text) && pronounsInText.push(POSSESSIVE_PRONOUN_TYPE);
-	REFLEXIVE_PRONOUN_REGEX.test(text) && pronounsInText.push(REFLEXIVE_PRONOUN_TYPE);
+	SUBJECT_PRONOUN_REGEX.test(text) && pronounsInText.push(SUBJECT_PRONOUN);
+	OBJECT_PRONOUN_REGEX.test(text) && pronounsInText.push(OBJECT_PRONOUN);
+	POSSESSIVE_PRONOUN_REGEX.test(text) && pronounsInText.push(POSSESSIVE_PRONOUN);
+	REFLEXIVE_PRONOUN_REGEX.test(text) && pronounsInText.push(REFLEXIVE_PRONOUN);
 	return pronounsInText;
 };
 
@@ -108,16 +110,16 @@ const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[])
 	for (const pronounType of pronounsInText) {
 		let pronounRegex: RegExp = new RegExp('');
 		switch (pronounType) {
-			case SUBJECT_PRONOUN_TYPE:
+			case SUBJECT_PRONOUN:
 				pronounRegex = SUBJECT_PRONOUN_REGEX;
 				break;
-			case OBJECT_PRONOUN_TYPE:
+			case OBJECT_PRONOUN:
 				pronounRegex = OBJECT_PRONOUN_REGEX;
 				break;
-			case POSSESSIVE_PRONOUN_TYPE:
+			case POSSESSIVE_PRONOUN:
 				pronounRegex = POSSESSIVE_PRONOUN_REGEX;
 				break;
-			case REFLEXIVE_PRONOUN_TYPE:
+			case REFLEXIVE_PRONOUN:
 				pronounRegex = REFLEXIVE_PRONOUN_REGEX;
 				break;
 			default:

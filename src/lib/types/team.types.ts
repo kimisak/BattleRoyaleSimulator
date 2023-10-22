@@ -1,4 +1,4 @@
-import type { Player } from './PlayerTypes';
+import type { Player } from './player.types';
 
 export type Team = {
 	logo?: TeamLogo;

@@ -1,5 +1,5 @@
-import type { Player } from './types/PlayerTypes';
-import type { Team } from './types/TeamTypes';
+import type { Player } from './types/player.types';
+import type { Team } from './types/team.types';
 import { MALE, FEMALE, ACTIVE, ALIVE } from './constants';
 
 const player1: Player = {
