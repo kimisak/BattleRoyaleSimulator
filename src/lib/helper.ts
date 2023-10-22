@@ -146,15 +146,18 @@ const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[])
 // This could be done in generatePronounRegExpStrings(...)'s RegexString creation.
 
 // Used to capitalize the first letter of each sentence,
-// specifically if a sentence begins with a player's lowercase pronoun.
+// useful when a sentence begins with a player's lowercase pronoun.
 const capitalizeSentences = (text: string): string => {
 	const sentences = text.split('. ');
-	const capitalizedSentences = sentences.map((sentence) => {
+	// beware the regex does not concern accented characters, vowel mutations, or graphemes etc.
+	const lowerCaseSentences = sentences.filter((sentence) => /^[a-z]/.test(sentence));
+	lowerCaseSentences.map((sentence) => {
 		const firstLetter = sentence.charAt(0).toUpperCase();
 		const restOfSentence = sentence.slice(1);
-		return `${firstLetter}${restOfSentence}`;
+		// replace the lowercase sentence with the capitalized one
+		sentences.splice(sentences.indexOf(sentence), 1, `${firstLetter}${restOfSentence}`);
 	});
-	return capitalizedSentences.join('. ');
+	return sentences.join('. ');
 }
 
 export const replaceTextPlaceholders = (text: string, players: Player[]): string => {
