@@ -29,14 +29,14 @@ export const NON_BINARY: Gender = {
 		reflexive: 'themself'
 	}
 };
-export const GENDER_TYPES: Gender[] = [MALE, FEMALE, NON_BINARY];
+export const GENDERS: Gender[] = [MALE, FEMALE, NON_BINARY];
 
 // Pronoun Types
 export const SUBJECT_PRONOUN = 'subject';
 export const OBJECT_PRONOUN = 'object';
 export const POSSESSIVE_PRONOUN = 'possessive';
 export const REFLEXIVE_PRONOUN = 'reflexive';
-export const PRONOUN_TYPES: PronounType[] = [
+export const PRONOUNS: PronounType[] = [
 	SUBJECT_PRONOUN,
 	OBJECT_PRONOUN,
 	POSSESSIVE_PRONOUN,
@@ -51,7 +51,7 @@ export const GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX = (pronouns: string) =>
 	`\\((${pronouns})(\\d+)\\)`;
 export const GAME_EVENT_TEXT_PRONOUN_DIVIDER = '/';
 // The regex strings for all pronoun types
-const PRONOUN_REGEX_STRINGS = generatePronounRegExpStrings(MALE, FEMALE, NON_BINARY);
+const PRONOUN_REGEX_STRINGS = generatePronounRegExpStrings(GENDERS);
 // Pronouns Regexes set with Flag 'g'
 export const SUBJECT_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[SUBJECT_PRONOUN], 'g');
 export const OBJECT_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[OBJECT_PRONOUN], 'g');

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Player } from '$lib/types/player.types';
 	import type { GameEvent } from '$lib/types/game.types';
-	import { replaceEventTextPlaceholders } from '$lib/helper';
+	import { replaceTextPlaceholders } from '$lib/helper';
 
 	export let players: Player[];
 	const eventText1 =
@@ -12,8 +12,8 @@
 	const event1: GameEvent = { text: eventText1 };
 	const event2: GameEvent = { text: eventText2 };
 
-	const replaced1 = replaceEventTextPlaceholders(event1, players);
-	const replaced2 = replaceEventTextPlaceholders(event2, players);
+	const replaced1 = replaceTextPlaceholders(event1.text, players);
+	const replaced2 = replaceTextPlaceholders(event2.text, players);
 </script>
 
 <div>

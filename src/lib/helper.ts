@@ -10,12 +10,11 @@ import {
 	POSSESSIVE_PRONOUN_REGEX,
 	REFLEXIVE_PRONOUN_REGEX,
 	GAME_EVENT_TEXT_PRONOUN_DIVIDER,
-	PRONOUN_TYPES,
-	GENDER_TYPES,
+	PRONOUNS,
+	GENDERS,
 	GAME_EVENT_TEXT_PLAYER_REGEX,
 	GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX
 } from './constants';
-import type { GameEvent } from './types/game.types';
 import type { Gender, PronounType, Pronouns } from './types/gender_and_pronouns.types';
 
 // Pronoun helpers used to create constants in src/lib/constants.ts
@@ -26,7 +25,9 @@ export type PronounRegexStrings = {
 	reflexive: string;
 };
 
-export const generatePronounRegExpStrings = (...genders: Gender[]): PronounRegexStrings => {
+export const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStrings => {
+	// This type is used to access the keys of the PronounRegexStrings object
+	// in ./constants.ts based on the PronounType keys.
 	const regExpStrings: PronounRegexStrings = {
 		subject: '',
 		object: '',
@@ -34,11 +35,13 @@ export const generatePronounRegExpStrings = (...genders: Gender[]): PronounRegex
 		reflexive: ''
 	};
 
-	PRONOUN_TYPES.forEach((pronounType) => {
+	// For each pronoun type, generate a regex string
+	PRONOUNS.forEach((pronounType) => {
 		let regexString = '';
+		// with values from each gender
 		genders.forEach((gender, index) => {
-			const isLastGender = index === GENDER_TYPES.length - 1;
-			// Append the regex string for the current pronounType
+			const isLastGender = index === GENDERS.length - 1;
+			// appended and seprarated by the divider
 			regexString += isLastGender
 				? `${gender.pronouns[pronounType]}` // Don't append the divider
 				: `${gender.pronouns[pronounType]}\\${GAME_EVENT_TEXT_PRONOUN_DIVIDER}`; // Append the divider
@@ -138,8 +141,8 @@ const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[])
 	return text;
 };
 
-export const replaceEventTextPlaceholders = (event: GameEvent, players: Player[]): string => {
-	event.text = replacePlayerNamePlaceholders(event.text, players);
-	event.text = replaceMultiplePronounTypePlaceholders(event.text, players);
-	return event.text;
+export const replaceTextPlaceholders = (text: string, players: Player[]): string => {
+	text = replacePlayerNamePlaceholders(text, players);
+	text = replaceMultiplePronounTypePlaceholders(text, players);
+	return text;
 };
