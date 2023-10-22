@@ -48,7 +48,6 @@ export const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStr
 			regExpStrings[pronounType] = GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX(regexString);
 		});
 	});
-	console.log('Regex strings:', regExpStrings)
 	return regExpStrings;
 };
 
@@ -114,7 +113,6 @@ const replaceSingularPronounTypePlaceholders = (
 
 const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[]): string => {
 	const pronounsInText: PronounType[] = getPronounsInText(text);
-	console.log("pronounsInText:", pronounsInText);
 	for (const pronounType of pronounsInText) {
 		let pronounRegex: RegExp = new RegExp('');
 		switch (pronounType) {
@@ -143,8 +141,25 @@ const replaceMultiplePronounTypePlaceholders = (text: string, players: Player[])
 	return text;
 };
 
+// TODO: perhaps move the capitalization concern below to the regex strings
+// Example: \(((he\/she\/they)|(He\/She\/They))(\d+)\)
+// This could be done in generatePronounRegExpStrings(...)'s RegexString creation.
+
+// Used to capitalize the first letter of each sentence,
+// specifically if a sentence begins with a player's lowercase pronoun.
+const capitalizeSentences = (text: string): string => {
+	const sentences = text.split('. ');
+	const capitalizedSentences = sentences.map((sentence) => {
+		const firstLetter = sentence.charAt(0).toUpperCase();
+		const restOfSentence = sentence.slice(1);
+		return `${firstLetter}${restOfSentence}`;
+	});
+	return capitalizedSentences.join('. ');
+}
+
 export const replaceTextPlaceholders = (text: string, players: Player[]): string => {
 	text = replacePlayerNamePlaceholders(text, players);
 	text = replaceMultiplePronounTypePlaceholders(text, players);
+	text = capitalizeSentences(text);
 	return text;
 };

@@ -12,7 +12,7 @@
 	const eventText3 =
 		'(Player1) ventured into the wilderness and unknowingly triggered a deadly trap, which also took the lives of (Player2), (Player3), and (Player4).';
 	const eventText4 =
-		"(Player1) and (Player2) decided to explore the dense forest together. As they journeyed deeper, (Player1) spotted a wild animal and tried to approach it, but (Player2) cautioned (him/her/them1) to stay back. Unbeknownst to them, (Player3) and (Player4) were also nearby, searching for resources. Suddenly, (Player3) noticed movement in the bushes and mistakenly thought it was an attacker. (He/She/They3) swiftly drew (his/her/their3) weapon and lunged at the figure, only to realize too late that it was (Player1). The tragic mistake resulted in (Player1)'s death, leaving (Player2) and (Player4) in shock and grief.";
+		"(Player1) and (Player2) decided to explore the dense forest together. As they journeyed deeper, (Player1) spotted a wild animal and tried to approach it, but (Player2) cautioned (him/her/them1) to stay back. Unbeknownst to them, (Player3) and (Player4) were also nearby, searching for resources. Suddenly, (Player3) noticed movement in the bushes and mistakenly thought it was an attacker. (he/she/they3) swiftly drew (his/her/their3) weapon and lunged at the figure, only to realize too late that it was (Player1). The tragic mistake resulted in (Player1)'s death, leaving (Player2) and (Player4) in shock and grief.";
 
 	const event1: GameEvent = { text: eventText1 };
 	const event2: GameEvent = { text: eventText2 };
