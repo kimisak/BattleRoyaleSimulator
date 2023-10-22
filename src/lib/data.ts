@@ -8,7 +8,7 @@ const player1: Player = {
 	nickname: 'Kimmi',
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
-	status: ALIVE
+	status: ALIVE,
 };
 
 const player2: Player = {
@@ -17,7 +17,7 @@ const player2: Player = {
 	nickname: 'Sunroad',
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
-	status: ALIVE
+	status: ALIVE,
 };
 
 const player3: Player = {
@@ -26,7 +26,7 @@ const player3: Player = {
 	nickname: 'IA',
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
-	status: ALIVE
+	status: ALIVE,
 };
 
 const player4: Player = {
@@ -35,7 +35,7 @@ const player4: Player = {
 	nickname: 'Osci',
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
-	status: 'dead'
+	status: ALIVE,
 };
 
 const team1: Team = {
@@ -54,21 +54,5 @@ const team2: Team = {
 	status: ACTIVE,
 };
 
-const team3: Team = {
-	name: 'Team 3',
-	motto: 'Second to none',
-	players: [player3, player4],
-	leader: player3,
-	status: ACTIVE,
-};
-
-const team4: Team = {
-	name: 'Team 4',
-	motto: 'Second to none',
-	players: [player3, player4],
-	leader: player3,
-	status: ACTIVE,
-};
-
 export const players = [player1, player2, player3, player4];
-export const teams = [team1, team2, team3, team4];
+export const teams = [team1, team2];

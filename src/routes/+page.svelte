@@ -2,13 +2,21 @@
 	import '../app.css';
 	import {teams} from '$lib/data';
 	import TeamCard from '$lib/components/TeamCard.svelte';
+	import EventCard from '$lib/components/EventCard.svelte';
+	import type { Team } from '$lib/types/TeamTypes';
+	import type { Player } from '$lib/types/PlayerTypes';
+
+	const all_players: Player[] = teams.reduce((acc:Player[], team: Team) => {
+		return acc.concat(team.players);
+	}, []);
 
 </script>
 
 <main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10">
 	{#each teams as team}
-		<TeamCard team={team} showMotto/>
+		<TeamCard {team} />
 	{/each}
+	<EventCard players={all_players}/>
 </main>
 	
 

@@ -15,7 +15,7 @@ import type {Team} from "$lib/types/TeamTypes";
     </div>
     <div class="flex flex-row gap-5">
         {#each team.players as player}
-            <PlayerCard player={player}/>
+            <PlayerCard {player}/>
         {/each}
     </div>
 </div>
