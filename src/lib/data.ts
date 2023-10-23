@@ -9,7 +9,7 @@ const player1: Player = {
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
 	status: DEAD,
-	kills: 4,
+	kills: 4
 };
 
 const player2: Player = {
@@ -19,7 +19,7 @@ const player2: Player = {
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
 	status: ALIVE,
-	kills: 2,
+	kills: 2
 };
 
 const player3: Player = {
@@ -29,7 +29,7 @@ const player3: Player = {
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
 	status: ALIVE,
-	kills: 1,
+	kills: 1
 };
 
 const player4: Player = {
@@ -39,7 +39,7 @@ const player4: Player = {
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
 	status: DEAD,
-	kills: 100,
+	kills: 100
 };
 
 const team1: Team = {

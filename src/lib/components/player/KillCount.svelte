@@ -6,10 +6,8 @@
 </script>
 
 <div class="flex flex-column gap-0.5 items-center">
-	{#if 0 < player.kills && showKillCount}
-		<i class="gg-track scale-50" />
-		<p class="text-xs">{player.kills}</p>
-	{/if}
+	<i class="gg-track scale-50" />
+	<p class="text-xs">{player.kills}</p>
 </div>
 
 <style lang="postcss">

@@ -70,8 +70,8 @@ These three constants define the regex rules:
 
 I insist you keep the placeholder format as is, and only change the `GAME_EVENT_TEXT_PRONOUN_DIVIDER`. However, if the format of the player or pronoun placeholders used in `GameEvent.text` changes, these regexes must reflect that change and be updated.
 
-
 ### Genders and Pronouns
+
 `Gender` and `Pronoun` `types` are defined in [gender_and_pronouns.types.ts](/src/lib/types/gender_and_pronouns.types.ts). These types are used for gender and pronoun `const`s in [/src/lib/constants](/src/lib/constants). The `const GENDERS` is used as an argument in `generatePronounRegExpStrings(GENDERS)` to dynamically generate the regex strings, and the `const PRONOUNS` is used within it.
 
 If you would like to add more genders, your only concerns are adding a string to `type GenderType`, create a new `const` of `type Gender` fill in its values. Then you add it to the `const GENDERS` list. That's it. There's no more things to do. No regexes to update. No nothing. Nada. It just works.
@@ -79,9 +79,10 @@ If you would like to add more genders, your only concerns are adding a string to
 The same goes if you'd like to add more pronouns. Define a new `type`, add it to the existing `type Pronouns`, add a `key` to the existing `type Pronouns` in [/src/lib/constants](/src/lib/constants), create a `const` for the pronoun `key`, add it to the existing `const PRONOUNS`. Finally, create a new `RegExp` with `const NEW_PRONOUN_REGEX = new RegExp(PRONOUN_REGEX_STRINGS[NEW_PRONOUN], 'g');`
 
 #### Personal commentary:
+
 I think this awesome, and I realize that it may be over-engineered and too many CONSTANTS. At first, the regexes were hard-coded, and it worked. But then I thought it was annoying to manually update the regexes for each pronoun value for each gender, especially considering the divider.
 I realize now that with some Editor functions of redefining words or variables, or using find and replace could also replace dividers and pronoun values. I find value in this that your only concerns now are Gender and Pronoun Types and Constants, and not the regexes and dividers themselves... unless you want to update the format.
-Still, if you were to update the `GameEvent.text` placeholder formats, your only concern would be the two regex patterns and the divider described in *Static and Dynamic Regexes*. I think..!
+Still, if you were to update the `GameEvent.text` placeholder formats, your only concern would be the two regex patterns and the divider described in _Static and Dynamic Regexes_. I think..!
 
 The point of this intricate solution to replace placeholders by dynamically creating regexes based on these types and constants, for each gender and pronoun type, was to reduce the matter of concerns:
 "If I want to change something, don't tell me I have to update all of these values, variables, and types?", I won't. My claim is that this way, you only have to define new types and consts once, and if you want to update the regex pattern, you do that in one place too.

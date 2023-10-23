@@ -87,7 +87,7 @@ const replacePlayerNamePlaceholders = (text: string, players: Player[]): string 
 	return filledSentence;
 };
 
-const checkPlayersAgainstPlaceholderIndexes = (text:string, players: Player[]): void => {
+const checkPlayersAgainstPlaceholderIndexes = (text: string, players: Player[]): void => {
 	// Regex assumes the index is formatted as '[a-z]#)'
 	// Example: 'y1)' as in 'they1)'
 	// Could be moved to constants.ts along with the other index regex assumptions
@@ -106,12 +106,13 @@ const checkPlayersAgainstPlaceholderIndexes = (text:string, players: Player[]): 
 			`The highest player placeholder index in the text is ${highestNumber}, but there are only ${players.length} players.`
 		);
 	} else if (highestNumber < players.length) {
-		console.warn('There are more players than player placeholders in the text: but it will still work.')
-	}
-	else {
+		console.warn(
+			'There are more players than player placeholders in the text: but it will still work.'
+		);
+	} else {
 		console.log('The number of players matches the number of player placeholders in the text.');
 	}
-}
+};
 
 const replaceSingularPronounTypePlaceholders = (
 	text: string,
@@ -184,11 +185,11 @@ const capitalizeSentencesStartingWithLowercase = (text: string): string => {
 		sentences.splice(sentences.indexOf(sentence), 1, `${firstLetter}${restOfSentence}`);
 	});
 	return sentences.join('. ');
-}
+};
 
 const addHtmlTagsToText = (text: string, players: Player[]): string => {
-	return "";
-}
+	return '';
+};
 
 // Replaces placeholders with player names and pronouns
 export const createContentfulGameEventText = (text: string, players: Player[]): string => {

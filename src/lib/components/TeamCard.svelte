@@ -9,10 +9,12 @@
 	<div class="text-center mb-1">
 		<h1 class="text-sm font-sans font-semibold">{team.name}</h1>
 		{#if showMotto}
-			<p class="text-xs font-serif font-light w-48 flex flex-column justify-center">“<span class="block truncate">{team.motto}</span>”</p>
+			<p class="text-xs font-serif font-light w-48 flex flex-column justify-center">
+				“<span class="block truncate">{team.motto}</span>”
+			</p>
 		{/if}
 	</div>
-	<div class="flex flex-row gap-5 flex-wrap justify-between">
+	<div class="flex flex-row flex-wrap justify-between">
 		{#each team.players as player}
 			<PlayerCard {player} />
 		{/each}
