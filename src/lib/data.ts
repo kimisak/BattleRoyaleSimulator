@@ -52,11 +52,11 @@ const team1: Team = {
 
 const team2: Team = {
 	name: 'Team 2',
-	motto: 'Second to none',
+	motto: 'Second to none except team 1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
 	players: [player3, player4],
 	leader: player3,
 	status: ACTIVE
 };
 
 export const players = [player1, player2, player3, player4];
-export const teams = [team1, team2];
+export const teams = [team1, team2, team2, team2, team2, team2, team1];

@@ -11,7 +11,7 @@
 	}, []);
 </script>
 
-<main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10">
+<main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10 w-full justify-evenly">
 	{#each teams as team}
 		<TeamCard {team} />
 	{/each}
