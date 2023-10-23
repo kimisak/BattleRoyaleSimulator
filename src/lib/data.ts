@@ -1,6 +1,6 @@
 import type { Player } from './types/player.types';
 import type { Team } from './types/team.types';
-import { MALE, FEMALE, ACTIVE, ALIVE } from './constants';
+import { MALE, FEMALE, ACTIVE, ALIVE, DEAD } from './constants';
 
 const player1: Player = {
 	givenName: 'Kim Isak',
@@ -8,8 +8,8 @@ const player1: Player = {
 	nickname: 'Kimmi',
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
-	status: ALIVE,
-	kills: 0,
+	status: DEAD,
+	kills: 4,
 };
 
 const player2: Player = {
@@ -19,7 +19,7 @@ const player2: Player = {
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
 	status: ALIVE,
-	kills: 0,
+	kills: 2,
 };
 
 const player3: Player = {
@@ -29,7 +29,7 @@ const player3: Player = {
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
 	status: ALIVE,
-	kills: 0,
+	kills: 1,
 };
 
 const player4: Player = {
@@ -38,8 +38,8 @@ const player4: Player = {
 	nickname: 'Osci',
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
-	status: ALIVE,
-	kills: 0,
+	status: DEAD,
+	kills: 100,
 };
 
 const team1: Team = {
