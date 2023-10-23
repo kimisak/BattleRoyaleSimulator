@@ -3,6 +3,7 @@
 	import { getPlayerName } from '$lib/helper';
 	export let player: Player;
 	export let showImage: boolean = false;
+	export let showKillCount: boolean = false;
 
 	const dead_or_alive_text = player.status === 'alive' ? 'text-green-500' : 'text-red-500';
 	const dead_grayscale = player.status === 'dead' ? 'grayscale' : '';
@@ -23,12 +24,14 @@
 		{getPlayerName(player)}
 	</p>
 	<div class="font-semibold text-sm mt-1 flex flex-column gap-5 justify-center items-center">
-		<div class="flex flex-column gap-1 items-center">
-			<i class="gg-track scale-75"></i>
-			<p>
-				{player.kills}
-			</p>
-		</div>
+		{#if 0 < player.kills && showKillCount}
+			<div class="flex flex-column gap-1 items-center">
+				<i class="gg-track scale-75"></i>
+				<p>
+					{player.kills}
+				</p>
+			</div>
+		{/if}
 		<p class="font-semibold text-sm {dead_or_alive_text}">{player.status}</p>
 	</div>
 </div>
