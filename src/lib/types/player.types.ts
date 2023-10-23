@@ -11,4 +11,5 @@ export type Player = {
 	teamName?: Team['name'];
 	image: string;
 	status: PlayerStatus;
+	kills: number;
 };

@@ -15,7 +15,6 @@
 	{#each teams as team}
 		<TeamCard {team} />
 	{/each}
-	<EventCard players={all_players} />
 </main>
 
 <style lang="postcss">

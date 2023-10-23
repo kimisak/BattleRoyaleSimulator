@@ -22,7 +22,15 @@
 	>
 		{getPlayerName(player)}
 	</p>
-	<p class="font-semibold text-sm mt-1 {dead_or_alive_text}">{player.status}</p>
+	<div class="font-semibold text-sm mt-1 flex flex-column gap-5 justify-center items-center">
+		<div class="flex flex-column gap-1 items-center">
+			<i class="gg-track scale-75"></i>
+			<p>
+				{player.kills}
+			</p>
+		</div>
+		<p class="font-semibold text-sm {dead_or_alive_text}">{player.status}</p>
+	</div>
 </div>
 
 <style lang="postcss">

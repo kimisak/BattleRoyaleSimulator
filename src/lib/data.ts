@@ -8,7 +8,8 @@ const player1: Player = {
 	nickname: 'Kimmi',
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
-	status: ALIVE
+	status: ALIVE,
+	kills: 0,
 };
 
 const player2: Player = {
@@ -17,7 +18,8 @@ const player2: Player = {
 	nickname: 'Sunroad',
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
-	status: ALIVE
+	status: ALIVE,
+	kills: 0,
 };
 
 const player3: Player = {
@@ -26,7 +28,8 @@ const player3: Player = {
 	nickname: 'IA',
 	image: 'https://i.pravatar.cc/',
 	gender: FEMALE,
-	status: ALIVE
+	status: ALIVE,
+	kills: 0,
 };
 
 const player4: Player = {
@@ -35,7 +38,8 @@ const player4: Player = {
 	nickname: 'Osci',
 	image: 'https://i.pravatar.cc/',
 	gender: MALE,
-	status: ALIVE
+	status: ALIVE,
+	kills: 0,
 };
 
 const team1: Team = {
