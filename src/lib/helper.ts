@@ -86,13 +86,6 @@ export const createMultiplePlayers = (data: string[]): Player[] => {
 	return data.map((player) => createSinglePlayer(player));
 };
 
-export const getPlayerName = (player: Player): string => {
-	if (player.nickname === '') {
-		return player.givenName;
-	}
-	return player.nickname ?? player.givenName;
-};
-
 // GameEvent
 const getPronounsInText = (text: string): PronounType[] => {
 	const pronounsInText: PronounType[] = [];
