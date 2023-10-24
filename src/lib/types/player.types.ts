@@ -1,7 +1,7 @@
 import type { Gender } from './gender_and_pronouns.types';
 import type { Team } from './team.types';
 
-type PlayerStatus = 'alive' | 'dead';
+export type PlayerStatus = 'alive' | 'dead';
 
 export type Player = {
 	givenName: string;
@@ -9,7 +9,7 @@ export type Player = {
 	nickname?: string;
 	gender: Gender;
 	teamName?: Team['name'];
-	image: string;
+	image?: string;
 	status: PlayerStatus;
 	kills: number;
 };

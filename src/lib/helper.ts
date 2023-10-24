@@ -12,7 +12,11 @@ import {
 	GAME_EVENT_TEXT_PRONOUN_DIVIDER,
 	PRONOUNS,
 	GAME_EVENT_TEXT_PLAYER_REGEX,
-	GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX
+	GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX,
+	NON_BINARY,
+	FEMALE,
+	MALE,
+	ALIVE
 } from './constants';
 import type { Gender, PronounType, Pronouns } from './types/gender_and_pronouns.types';
 
@@ -51,7 +55,37 @@ export const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStr
 	return regExpStrings;
 };
 
-// Player
+// Player helpers
+const setGenderFromString = (gender: string): Gender => {
+	switch (gender) {
+		case MALE.gender:
+			return MALE;
+		case FEMALE.gender:
+			return FEMALE;
+		case NON_BINARY.gender:
+			return NON_BINARY;
+		default:
+			throw new Error('Gender not found');
+	}
+};
+
+const createSinglePlayer = (data: string): Player => {
+	const [givenName, familyName, nickname, gender] = data.split(', ');
+	return {
+		givenName,
+		familyName: familyName != 'None' ? familyName : null,
+		nickname: nickname != 'None' ? nickname : null,
+		gender: setGenderFromString(gender),
+		image: 'https://i.pravatar.cc/',
+		status: ALIVE,
+		kills: 0
+	} as Player;
+};
+
+export const createMultiplePlayers = (data: string[]): Player[] => {
+	return data.map((player) => createSinglePlayer(player));
+};
+
 export const getPlayerName = (player: Player): string => {
 	if (player.nickname === '') {
 		return player.givenName;
