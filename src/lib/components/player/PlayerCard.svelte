@@ -5,7 +5,7 @@
 	import PlayerStatus from './PlayerStatus.svelte';
 	export let player: Player;
 	// Settings
-	export let showImage: boolean = true;
+	export let showImage: boolean = false;
 	export let showKillCount: boolean = true;
 
 	const dead_grayscale = player.status === DEAD ? 'grayscale' : '';

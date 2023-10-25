@@ -2,7 +2,7 @@
 	import type { Team } from '$lib/types/team.types';
 	import PlayerCard from './player/PlayerCard.svelte';
 	export let team: Team;
-	export let showMotto = true;
+	export let showMotto = false;
 </script>
 
 <div class="flex flex-col items-center">
