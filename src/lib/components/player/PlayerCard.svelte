@@ -5,13 +5,13 @@
 	import PlayerStatus from './PlayerStatus.svelte';
 	export let player: Player;
 	// Settings
-	export let showImage: boolean = true;
+	export let showImage: boolean = false;
 	export let showKillCount: boolean = true;
 
 	const dead_grayscale = player.status === DEAD ? 'grayscale' : '';
 </script>
 
-<div class="text-center w-20 flex flex-col">
+<div class="text-center w-24 flex flex-col">
 	{#if showImage}
 		<img
 			class="mx-auto inset-0 object-contain w-10/12 text-xs {dead_grayscale}"
@@ -21,7 +21,7 @@
 		/>
 	{/if}
 	<p class="text-xs font-bold overflow-wrap break-word">
-		{player.givenName}
+		{`${player.givenName} ${player.familyName}`}
 	</p>
 	<div class="font-semibold text-xs flex flex-row gap-1.5 justify-center items-center">
 		{#if 0 < player.kills && showKillCount}

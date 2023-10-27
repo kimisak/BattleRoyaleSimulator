@@ -1,18 +1,13 @@
 <script lang="ts">
-	import '../app.css';
-	import { teams } from '$lib/data';
 	import TeamCard from '$lib/components/TeamCard.svelte';
-	import EventCard from '$lib/components/EventCard.svelte';
-	import type { Team } from '$lib/types/team.types';
-	import type { Player } from '$lib/types/player.types';
+	import '../app.css';
+	import type { PageData } from './$types';
 
-	const all_players: Player[] = teams.reduce((acc: Player[], team: Team) => {
-		return acc.concat(team.players);
-	}, []);
+	export let data: PageData;
 </script>
 
-<main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10 w-full justify-evenly">
-	{#each teams as team}
+<main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10 w-full justify-center">
+	{#each data.teams as team}
 		<TeamCard {team} />
 	{/each}
 </main>

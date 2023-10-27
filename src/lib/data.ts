@@ -1,47 +1,27 @@
-import type { Team } from './types/team.types';
-import { ACTIVE } from './constants';
-import { createMultiplePlayers } from './helper';
-
-const hunger_games_characters = [
-	'Katniss, Everdeen, Girl on Fire, female',
-	'Peeta, Mellark, The Boy with the Bread, male',
-	'Gale, Hawthorne, The Hunter, male',
-	'Haymitch, Abernathy, Haymitch, male',
-	'Effie, Trinket, Effie, female',
-	'Cinna, None, Cinna, male',
-	'Primrose, Everdeen, Prim, female',
-	'Rue, None, Rue, female',
-	'Thresh, None, Thresh, male',
-	'Cato, None, Cato, male',
-	'Clove, None, Clove, female',
-	'Foxface, None, Foxface, female',
-	'Finnick, Odair, Finnick, male',
-	'Johanna, Mason, Johanna, female',
-	'Beetee, Latier, Beetee, male',
-	'Wiress, None, Wiress, female',
-	'Enobaria, None, Enobaria, female',
-	'Boggs, None, Boggs, male',
-	'Pollux, None, Pollux, male',
-	'Coriolanus, Snow, President Snow, male',
-	'Alma, Coin, President Coin, female'
+export const character_data = [
+	"John, Smith, Maverick, male",
+	"Emily, Davis, Sparkle, female",
+	"Alex, Johnson, Innovator, non-binary",
+	"Sarah, Williams, Sunshine, female",
+	"Michael, Brown, Explorer, male",
+	"Taylor, Anderson, Trailblazer, non-binary",
+	"Jessica, Lee, Dreamer, female",
+	"David, Martinez, Techie, male",
+	"Emma, Taylor, Enigma, female",
+	"Ryan, Robinson, Visionary, male",
+	"Taylor, Clark, Catalyst, non-binary",
+	"Olivia, Turner, Melody, female",
+	"Jordan, White, Whiz, non-binary",
+	"Matthew, King, Genius, male",
+	"Sophia, Garcia, Luminary, female",
+	"Avery, Wright, Voyager, non-binary",
+	"Lily, Moore, Serenity, female",
+	"Ethan, Parker, Innovator, male",
+	"Harper, Hall, Spark, non-binary",
+	"Benjamin, Lewis, Scholar, male",
+	"Mia, Adams, Harmony, female",
+	"Riley, Wilson, Pioneer, non-binary",
+	"Chloe, Harris, Artist, female",
+	"Mason, Carter, Maestro, male",
+	"Kim Isak, Olsen, Kimmi, male",
 ];
-
-const players = createMultiplePlayers(hunger_games_characters);
-
-const team1: Team = {
-	name: 'Team 1',
-	motto: 'We are number one',
-	players: [players[1], players[2]],
-	leader: players[1],
-	status: ACTIVE
-};
-
-const team2: Team = {
-	name: 'Team 2',
-	motto: 'Second to none except team 1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-	players: [players[3], players[4]],
-	leader: players[3],
-	status: ACTIVE
-};
-
-export const teams = [team1, team2, team2, team2, team2, team2, team1];

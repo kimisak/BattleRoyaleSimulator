@@ -6,6 +6,14 @@ type ReflexivePronoun = 'himself' | 'herself' | 'themself';
 export type Pronouns = SubjectPronoun | ObjectPronoun | PossessivePronoun | ReflexivePronoun;
 export type PronounType = 'subject' | 'object' | 'possessive' | 'reflexive';
 
+// This type could probably be moved, but it's only used in the following function.
+export type PronounRegexStrings = {
+	subject: string;
+	object: string;
+	possessive: string;
+	reflexive: string;
+};
+
 export type GenderPronouns = {
 	subject: SubjectPronoun;
 	object: ObjectPronoun;

@@ -1,59 +1,29 @@
-import type { Player } from './types/player.types';
+import type { Player } from '$lib/types/player.types';
 
 import {
 	SUBJECT_PRONOUN,
 	OBJECT_PRONOUN,
 	POSSESSIVE_PRONOUN,
 	REFLEXIVE_PRONOUN,
-	SUBJECT_PRONOUN_REGEX,
-	OBJECT_PRONOUN_REGEX,
-	POSSESSIVE_PRONOUN_REGEX,
-	REFLEXIVE_PRONOUN_REGEX,
-	GAME_EVENT_TEXT_PRONOUN_DIVIDER,
-	PRONOUNS,
-	GAME_EVENT_TEXT_PLAYER_REGEX,
-	GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX,
 	NON_BINARY,
 	FEMALE,
 	MALE,
-	ALIVE
-} from './constants';
-import type { Gender, PronounType, Pronouns } from './types/gender_and_pronouns.types';
-
-// Pronoun helpers used to create constants in src/lib/constants.ts
-// This type could probably be moved, but it's only used in the following function.
-export type PronounRegexStrings = {
-	subject: string;
-	object: string;
-	possessive: string;
-	reflexive: string;
-};
-
-export const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStrings => {
-	// This type is used to access the keys of the PronounRegexStrings object
-	// in ./constants.ts based on the PronounType keys.
-	const regExpStrings: PronounRegexStrings = {
-		subject: '',
-		object: '',
-		possessive: '',
-		reflexive: ''
-	};
-
-	// For each pronoun type, generate a regex string
-	PRONOUNS.forEach((pronounType) => {
-		let regexString = '';
-		// with values from each gender
-		genders.forEach((gender, index) => {
-			const isLastGender = index === genders.length - 1;
-			// appended and seprarated by the divider
-			regexString += isLastGender
-				? `${gender.pronouns[pronounType]}` // Don't append the divider
-				: `${gender.pronouns[pronounType]}\\${GAME_EVENT_TEXT_PRONOUN_DIVIDER}`; // Append the divider
-			regExpStrings[pronounType] = GAME_EVENT_TEXT_PRONOUN_DYNAMIC_REGEX(regexString);
-		});
-	});
-	return regExpStrings;
-};
+	ALIVE,
+	ACTIVE,
+	GAME_EVENT_TEXT_PRONOUN_DIVIDER,
+	REFLEXIVE_PRONOUN_REGEX,
+	POSSESSIVE_PRONOUN_REGEX,
+	OBJECT_PRONOUN_REGEX,
+	SUBJECT_PRONOUN_REGEX,
+	GAME_EVENT_TEXT_PLAYER_REGEX,
+	TEAM_SIZE,
+} from '$lib/constants';
+import type {
+	Gender,
+	PronounType,
+	Pronouns
+} from '$lib/types/gender_and_pronouns.types';
+import type { Team } from '$lib/types/team.types';
 
 // Player helpers
 const setGenderFromString = (gender: string): Gender => {
@@ -82,8 +52,49 @@ const createSinglePlayer = (data: string): Player => {
 	} as Player;
 };
 
-export const createMultiplePlayers = (data: string[]): Player[] => {
+export const createMultiplePlayers: Function = (data: string[]): Player[] => {
 	return data.map((player) => createSinglePlayer(player));
+};
+
+export const playersNameCount = (players: Player[]) => players.reduce((acc: { [key: string]: number }, player: Player) => {
+	acc[player.givenName] = (acc[player.givenName] || 0) + 1;
+	return acc;
+  }, {});
+
+// Team
+const createSingleTeam = (name: string, players: Player[]): Team => {
+	return {
+		name,
+		players,
+		leader: players[0],
+		status: ACTIVE
+	} as Team;
+};
+
+export const createMultipleTeams = (players: Player[], memberLimit: number = TEAM_SIZE): Team[] => {
+	const teams: Team[] = [];
+
+	let teamCount = 1;  // Counter for team names
+	let remainingPlayers = [...players];  // Clone the players array to manipulate
+	
+	// Calculate the number of teams
+	const numberOfTeams = Math.floor(players.length / memberLimit);
+	const remainingTeamSize = players.length % memberLimit;
+	
+	// Create complete teams
+	for (let i = 0; i < numberOfTeams; i++) {
+	  const teamPlayers = remainingPlayers.splice(0, memberLimit);
+	  const team = createSingleTeam(`Team ${teamCount++}`, teamPlayers);
+	  teams.push(team);
+	}
+	
+	// Add remaining players to the last team if there are any left
+	if (remainingTeamSize > 0) {
+	  const team = createSingleTeam(`Team ${teamCount}`, remainingPlayers);
+	  teams.push(team);
+	}
+
+	return teams;
 };
 
 // GameEvent
@@ -104,7 +115,7 @@ const replacePlayerNamePlaceholders = (text: string, players: Player[]): string 
 			const index = parseInt(textPlayerIndex, 10) - 1;
 			const player = players[index];
 			if (player) {
-				return getPlayerName(player);
+				return player.givenName;
 			}
 			// If player is not found, return the placeholder
 			return match;
@@ -213,11 +224,6 @@ const capitalizeSentencesStartingWithLowercase = (text: string): string => {
 	});
 	return sentences.join('. ');
 };
-
-const addHtmlTagsToText = (text: string, players: Player[]): string => {
-	return '';
-};
-
 // Replaces placeholders with player names and pronouns
 export const createContentfulGameEventText = (text: string, players: Player[]): string => {
 	checkPlayersAgainstPlaceholderIndexes(text, players);
