@@ -1,7 +1,7 @@
 # Battle Royale Simulator
 
 A project developed with [SvelteKit](https://kit.svelte.dev/), [Typescript](https://www.typescriptlang.org/), and styled with [Tailwind](https://tailwindcss.com/). Icons from [css.gg
-](https://css.gg/). Idea inspired by [Brant Steele's Hunger Games Simulator](https://brantsteele.net/hungergames/disclaimer.php). Images and Data are developed by [OpenAI](https://openai.com/)'s [ChatGPT-3.5 and ChatGPT-4.0](https://chat.openai.com/) and [DALLE-3 Beta](https://openai.com/blog/dall-e-3-is-now-available-in-chatgpt-plus-and-enterprise), with [@kimisak](https://github.com/kimisak) as the _prompt engineer_.
+](https://css.gg/). Idea inspired by [Brant Steele's Hunger Games Simulator](https://brantsteele.net/hungergames/disclaimer.php). Images and Data are developed by [OpenAI](https://openai.com/)'s [ChatGPT-3.5 and ChatGPT-4.0](https://chat.openai.com/) and [DALL·E 3 Beta](https://openai.com/blog/dall-e-3-is-now-available-in-chatgpt-plus-and-enterprise), with [@kimisak](https://github.com/kimisak) as the _prompt engineer_.
 
 ## Developing
 
