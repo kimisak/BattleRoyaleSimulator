@@ -23,5 +23,4 @@ export const character_data = [
 	"Riley, Wilson, Pioneer, non-binary",
 	"Chloe, Harris, Artist, female",
 	"Mason, Carter, Maestro, male",
-	"Kim Isak, Olsen, Kimmi, male",
 ];

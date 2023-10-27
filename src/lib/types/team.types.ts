@@ -1,8 +1,9 @@
 import type { Player } from './player.types';
 
 export type Team = {
+	id: number;
 	logo?: TeamLogo;
-	name: string;
+	name?: string;
 	motto?: string;
 	players: Player[];
 	leader?: Player;

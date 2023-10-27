@@ -16,13 +16,9 @@ import {
 	OBJECT_PRONOUN_REGEX,
 	SUBJECT_PRONOUN_REGEX,
 	GAME_EVENT_TEXT_PLAYER_REGEX,
-	TEAM_SIZE,
+	TEAM_SIZE
 } from '$lib/constants';
-import type {
-	Gender,
-	PronounType,
-	Pronouns
-} from '$lib/types/gender_and_pronouns.types';
+import type { Gender, PronounType, Pronouns } from '$lib/types/gender_and_pronouns.types';
 import type { Team } from '$lib/types/team.types';
 
 // Player helpers
@@ -56,14 +52,16 @@ export const createMultiplePlayers: Function = (data: string[]): Player[] => {
 	return data.map((player) => createSinglePlayer(player));
 };
 
-export const playersNameCount = (players: Player[]) => players.reduce((acc: { [key: string]: number }, player: Player) => {
-	acc[player.givenName] = (acc[player.givenName] || 0) + 1;
-	return acc;
-  }, {});
+export const playersNameCount = (players: Player[]) =>
+	players.reduce((acc: { [key: string]: number }, player: Player) => {
+		acc[player.givenName] = (acc[player.givenName] || 0) + 1;
+		return acc;
+	}, {});
 
 // Team
-const createSingleTeam = (name: string, players: Player[]): Team => {
+const createSingleTeam = (id: number, name: string, players: Player[]): Team => {
 	return {
+		id,
 		name,
 		players,
 		leader: players[0],
@@ -73,25 +71,24 @@ const createSingleTeam = (name: string, players: Player[]): Team => {
 
 export const createMultipleTeams = (players: Player[], memberLimit: number = TEAM_SIZE): Team[] => {
 	const teams: Team[] = [];
-
-	let teamCount = 1;  // Counter for team names
-	let remainingPlayers = [...players];  // Clone the players array to manipulate
 	
 	// Calculate the number of teams
 	const numberOfTeams = Math.floor(players.length / memberLimit);
 	const remainingTeamSize = players.length % memberLimit;
 	
+	let teamCount = 0; // Counter for team names
+	let remainingPlayers = [...players]; // Clone the players array to manipulate
 	// Create complete teams
-	for (let i = 0; i < numberOfTeams; i++) {
-	  const teamPlayers = remainingPlayers.splice(0, memberLimit);
-	  const team = createSingleTeam(`Team ${teamCount++}`, teamPlayers);
-	  teams.push(team);
+	while (++teamCount <= numberOfTeams) {
+		const teamPlayers = remainingPlayers.splice(0, memberLimit);
+		const team = createSingleTeam(teamCount, `Team ${teamCount}`, teamPlayers);
+		teams.push(team);
 	}
-	
+
 	// Add remaining players to the last team if there are any left
 	if (remainingTeamSize > 0) {
-	  const team = createSingleTeam(`Team ${teamCount}`, remainingPlayers);
-	  teams.push(team);
+		const team = createSingleTeam(teamCount, `Team ${teamCount}`, remainingPlayers);
+		teams.push(team);
 	}
 
 	return teams;

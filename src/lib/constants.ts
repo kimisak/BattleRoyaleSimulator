@@ -100,4 +100,4 @@ export const ELIMINATED = 'eliminated';
 export const DISQUALIFIED = 'disqualified';
 
 // Team
-export const TEAM_SIZE = 3;
+export const TEAM_SIZE = 2;

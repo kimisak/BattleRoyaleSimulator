@@ -9,7 +9,7 @@
 
 <div class="flex flex-col items-center">
 	<div class="text-center mb-1 w-full">
-		<h1 class="text-sm font-sans font-semibold border-b-2">{ 1 < TEAM_SIZE ? team.name : `#${team.name.match(/\d+/)}`}</h1>
+		<h1 class="text-sm font-sans font-semibold border-b-2">{ 1 < TEAM_SIZE ? team.name : `#${team.id}`}</h1>
 		{#if showMotto}
 			<p class="text-xs font-serif font-light w-48 flex flex-column justify-center">
 				“<span class="block truncate">{team.motto}</span>”
