@@ -1,6 +1,6 @@
 import type { Gender, PronounRegexStrings, PronounType } from '$lib/types/gender_and_pronouns.types';
 
-// TODO: switch 'gender' to enum?
+// TODO: switch 'Gender.gender' to enum?
 // Genders
 export const MALE: Gender = {
 	gender: 'male',
@@ -56,6 +56,8 @@ export const GAME_EVENT_TEXT_PRONOUN_DIVIDER = '/';
 // when I try to import it from ./helper.ts, saying that
 // "__vite_ssr_import_0__.generatePronounRegExpStrings is not a function" :D
 // I tried to make it async in ./helper.ts and await it here, but that didn't work.
+// I see now that the relationship between ./helper.ts and ./constants.ts probably created
+// a logical error in imports.
 const generatePronounRegExpStrings = (genders: Gender[]): PronounRegexStrings => {
 	// This type is used to access the keys of the PronounRegexStrings object
 	// in ./constants.ts based on the PronounType keys.
