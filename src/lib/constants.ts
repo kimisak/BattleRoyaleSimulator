@@ -1,4 +1,8 @@
-import type { Gender, PronounRegexStrings, PronounType } from '$lib/types/gender_and_pronouns.types';
+import type {
+	Gender,
+	PronounRegexStrings,
+	PronounType
+} from '$lib/types/gender_and_pronouns.types';
 
 // TODO: switch 'Gender.gender' to enum?
 // Genders

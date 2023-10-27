@@ -6,10 +6,12 @@
 	export let data: PageData;
 </script>
 
-<main class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10 w-full justify-center">
-	{#each data.teams as team}
-		<TeamCard {team} />
-	{/each}
+<main>
+	<div class="p-10 flex flex-col sm:flex-row sm:flex-wrap gap-10 w-full justify-center">
+		{#each data.teams as team}
+			<TeamCard {team} />
+		{/each}
+	</div>
 </main>
 
 <style lang="postcss">

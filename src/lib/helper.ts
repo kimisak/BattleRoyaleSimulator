@@ -71,11 +71,11 @@ const createSingleTeam = (id: number, name: string, players: Player[]): Team => 
 
 export const createMultipleTeams = (players: Player[], memberLimit: number = TEAM_SIZE): Team[] => {
 	const teams: Team[] = [];
-	
+
 	// Calculate the number of teams
 	const numberOfTeams = Math.floor(players.length / memberLimit);
 	const remainingTeamSize = players.length % memberLimit;
-	
+
 	let teamCount = 0; // Counter for team names
 	let remainingPlayers = [...players]; // Clone the players array to manipulate
 	// Create complete teams
